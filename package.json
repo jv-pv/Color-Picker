@@ -1,0 +1,12 @@
+{
+  "name": "color-picker",
+  "version": "1.0.0",
+  "description": "Color picker web app using The Color API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["color", "picker", "API"],
+  "author": "John Pieri Varela",
+  "license": "ISC"
+}
