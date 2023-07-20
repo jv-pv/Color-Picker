@@ -17,7 +17,7 @@ formEl.addEventListener("submit", (e) => {
 
   let newHexValue = colorHexValue.substring(1);
 
-  baseFetchUrl = `https://www.thecolorapi.com/scheme?hex=${newHexValue}&mode=${modeValue}&count=6`;
+  baseFetchUrl = "https://www.thecolorapi.com/scheme?hex=${newHexValue}&mode=${modeValue}&count=6";
 
   fethColors();
 });
@@ -45,7 +45,7 @@ function fethColors() {
           copyToClipboard(fetchedColorsArr[i], fetchedColorsArr[i]);
         });
 
-        colorData.addEventListener('click', () => {
+        colorData.addEventListener("click", () => {
           copyToClipboard(fetchedColorsArr[i], fetchedColorsArr[i])
         })
       }
