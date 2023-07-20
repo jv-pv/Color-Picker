@@ -1,11 +1,12 @@
 const colorInput = document.getElementById("color-picker");
 const colorModes = document.getElementById("color-modes");
-const submitBtn = document.querySelector(".submit-btn");
 const copyModal = document.querySelector(".copy-msg");
 const formEl = document.querySelector("form");
 let fetchedColorsArr = [];
 let baseFetchUrl =
   "https://www.thecolorapi.com/scheme?hex=000000&mode=monochrome";
+
+// Form submit and fetch
 
 formEl.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -17,14 +18,22 @@ formEl.addEventListener("submit", (e) => {
 
   let newHexValue = colorHexValue.substring(1);
 
-  baseFetchUrl = "https://www.thecolorapi.com/scheme?hex=${newHexValue}&mode=${modeValue}&count=6";
+  baseFetchUrl = `https://www.thecolorapi.com/scheme?hex=${newHexValue}&mode=${modeValue}&count=6`;
 
   fethColors();
 });
 
+// Fetch Color API
+
 function fethColors() {
   fetch(baseFetchUrl)
-    .then((response) => response.json())
+    .then((response) => {
+      // HTTP Status Check
+      if (!response.ok) {
+        throw new Error("Network response not ok")
+      }
+      return response.json()
+    })
     .then((data) => {
       const colorsArr = data.colors;
 
@@ -49,8 +58,15 @@ function fethColors() {
           copyToClipboard(fetchedColorsArr[i], fetchedColorsArr[i])
         })
       }
+    })
+    // Catch errors
+    .catch(error => {
+      console.log("Error", error)
+      alert("Error")
     });
 }
+
+// Copy hex code to clipboard
 
 function copyToClipboard(text, hexValue) {
   let copyMsg = "";
