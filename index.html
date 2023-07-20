@@ -4,18 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Istok+Web:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <title>Color Picker</title>
 </head>
 
 <body>
     <header>
-        <h1>Color Picker</h1>
-        <nav>
-            <ul>
-                <li><a href="#">Color Picker</a></li>
-                <li><a href="#">About</a></li>
-            </ul>
-        </nav>
+        <div class="header-inner-container">
+            <h1>Color Picker</h1>
+            <nav>
+                <ul role="navigation">
+                    <li><a href="#">About</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main>
         <section class="cp-container">
@@ -29,8 +36,7 @@
                     <input type="color" id="color-picker">
 
                     <label for="color-modes"></label>
-                    <select name="color-modes" id="color-modes">
-                        <option value="--Select Color Mode">--Select Color Mode</option>
+                    <select name="color-modes" id="color-modes" role="list">
                         <option value="monochrome">Monochrome</option>
                         <option value="monochrome-dark">Monochrome-dark</option>
                         <option value="monochrome-light">Monochrome-light</option>
@@ -50,23 +56,29 @@
 
             <article class="cp-output">
 
-                <div class="color-1"></div>
-                <div class="color-2"></div>
-                <div class="color-3"></div>
-                <div class="color-4"></div>
-                <div class="color-5"></div>
+                <section class="cp-colors">
+
+                    <div class="color-1"></div>
+                    <div class="color-2"></div>
+                    <div class="color-3"></div>
+                    <div class="color-4"></div>
+                    <div class="color-5"></div>
+
+                </section>
+
+                <section class="cp-color-codes">
+
+                    <data class="color-1-data" value="">#000000</data>
+                    <data class="color-2-data" value="">#1A1919</data>
+                    <data class="color-3-data" value="">#343232</data>
+                    <data class="color-4-data" value="">#4F4A4A</data>
+                    <data class="color-5-data" value="">#6A6262</data>
+
+                </section>
+
 
             </article>
 
-            <article class="color-hex-values">
-
-                <data value="">#F55A5A</data>
-                <data value="">#2B283A</data>
-                <data value="">#FBF3AB</data>
-                <data value="">#AAD1B6</data>
-                <data value="">#A626D3</data>
-
-            </article>
         </section>
     </main>
     <script src="index.js"></script>
