@@ -76,8 +76,8 @@ select {
 
 
 header {
-    width: 100%;
     background-color: rgb(9, 9, 30);
+    transition: background-color 1s;
 }
 
 header :is(h1, a) {
@@ -87,12 +87,12 @@ header :is(h1, a) {
 .header-inner-container {
     display: flex;
     align-items: center;
-    width: min(90%, 1400px);
+    width: min(90%, 87.5em);
     margin-inline: auto;
 }
 
 .header-inner-container nav {
-    width: min(50%, 250px);
+    width: min(50%, 15.625em);
     margin-inline-start: auto;
 }
 
@@ -100,6 +100,7 @@ header :is(h1, a) {
     display: flex;
     justify-content: flex-end;
     margin-right: 1em;
+    list-style: none;
 }
 
 .header-inner-container nav a {
@@ -110,10 +111,9 @@ header :is(h1, a) {
 
 main {
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: min(90%, 1400px);
-    height: 90dvh;
+    width: min(90%, 87.5em);
+    height: calc(100dvh - 60px);
     margin-inline: auto;
 }
 
@@ -121,9 +121,10 @@ main {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: 1fr auto;
-    width: min(100%, 550px);
-    margin: 0 auto;
-    row-gap: 1.25em;
+    width: min(100%, 34.38rem);
+    min-width: 15.63rem;
+    margin: 4.375rem auto 0;
+    row-gap: 1.25rem;
 }
 
 .cp-inputs {
@@ -138,11 +139,16 @@ main {
     padding-inline: 1em;
 }
 
+form :is(input, select, button) {
+    cursor: pointer;
+}
+
 form input[type="color"] {
     width: min(100%, 3.1875rem);
     min-width: 2rem;
     height: 2.125rem;
-    border: 0.5px solid #313131;
+    border: 1px solid #313131;
+    border-radius: 5px;
 }
 
 form select {
@@ -255,6 +261,14 @@ form button:active {
 
 .copy-msg.active {
     opacity: 1;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 420px) {
+    .cp-color-codes data {
+        font-size: calc(var(--step--2) - 2.5px);
+    }
 }
 
 /* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
