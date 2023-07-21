@@ -1,10 +1,12 @@
 const colorInput = document.getElementById("color-picker");
 const colorModes = document.getElementById("color-modes");
 const copyModal = document.querySelector(".copy-msg");
+const header = document.querySelector("header");
+const headerText = document.querySelector("header :is(h1, a)")
 const formEl = document.querySelector("form");
 let fetchedColorsArr = [];
 let baseFetchUrl =
-  "https://www.thecolorapi.com/scheme?hex=000000&mode=monochrome";
+  "https://www.thecolorapi.com/scheme?hex=d1d1d1&mode=monochrome";
 
 // Form submit and fetch
 
@@ -30,23 +32,32 @@ function fethColors() {
     .then((response) => {
       // HTTP Status Check
       if (!response.ok) {
-        throw new Error("Network response not ok")
+        throw new Error("Network response not ok");
       }
-      return response.json()
+      return response.json();
     })
     .then((data) => {
       const colorsArr = data.colors;
 
+      // ALT method to aquire hex values using Object.entries
+
+      // colorsArr.forEach(colo => {
+      //   let entries = Object.entries(colo.hex)
+      //   console.log(entries)
+      //   console.log(entries[0][1])
+      // })
+
       colorsArr.forEach((color) => {
         fetchedColorsArr.push(color.hex.value);
       });
-      console.log(colorsArr);
 
       for (let i = 0; i < fetchedColorsArr.length; i++) {
         let colorDiv = document.querySelector(`.color-${i + 1}`);
         let colorData = document.querySelector(`.color-${i + 1}-data`);
 
         colorDiv.style.background = fetchedColorsArr[i];
+        header.style.background = fetchedColorsArr[i]
+        // headerText.style.color = fetchedColorsArr[0]
         colorData.textContent = fetchedColorsArr[i];
         colorData.value = fetchedColorsArr[i];
 
@@ -55,14 +66,14 @@ function fethColors() {
         });
 
         colorData.addEventListener("click", () => {
-          copyToClipboard(fetchedColorsArr[i], fetchedColorsArr[i])
-        })
+          copyToClipboard(fetchedColorsArr[i], fetchedColorsArr[i]);
+        });
       }
     })
     // Catch errors
-    .catch(error => {
-      console.log("Error", error)
-      alert("Error")
+    .catch((error) => {
+      console.log("Error", error);
+      alert("Error");
     });
 }
 
@@ -76,6 +87,7 @@ function copyToClipboard(text, hexValue) {
       copyMsg = `<p class="copy-msg-inner">Copied: ${hexValue}</p>`;
       copyModal.classList.add("active");
       copyModal.style.background = `${hexValue}`;
+      header.style.backgroundColor = `${hexValue}`;
       copyModal.innerHTML = copyMsg;
       setTimeout(() => {
         copyModal.classList.remove("active");
