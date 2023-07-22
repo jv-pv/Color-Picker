@@ -57,7 +57,7 @@ function fethColors() {
 
         colorDiv.style.background = fetchedColorsArr[i];
         header.style.background = fetchedColorsArr[i]
-        // headerText.style.color = fetchedColorsArr[0]
+        headerText.style.color = fetchedColorsArr[3]
         colorData.textContent = fetchedColorsArr[i];
         colorData.value = fetchedColorsArr[i];
 
