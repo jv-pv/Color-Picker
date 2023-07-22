@@ -39,14 +39,6 @@ function fethColors() {
     .then((data) => {
       const colorsArr = data.colors;
 
-      // ALT method to aquire hex values using Object.entries
-
-      // colorsArr.forEach(colo => {
-      //   let entries = Object.entries(colo.hex)
-      //   console.log(entries)
-      //   console.log(entries[0][1])
-      // })
-
       colorsArr.forEach((color) => {
         fetchedColorsArr.push(color.hex.value);
       });
