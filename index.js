@@ -63,6 +63,7 @@ function fethColors() {
       }
     })
     // Catch errors
+    
     .catch((error) => {
       console.log("Error", error);
       alert("Error");
