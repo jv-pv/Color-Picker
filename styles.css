@@ -135,7 +135,6 @@ main {
 
 .cp-inputs form {
     display: inline-flex;
-    justify-content: center;
     align-items: center;
     width: min(100%, 550px);
     padding-inline: 1em;
@@ -234,7 +233,7 @@ form button:active {
     grid-template-columns: repeat(6, 1fr);
     justify-items: center;
     width: 100%;
-    height: 50px;
+    height: 30px;
 }
 
 .cp-color-codes data {
